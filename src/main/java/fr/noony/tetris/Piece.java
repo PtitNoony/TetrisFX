@@ -192,7 +192,7 @@ public abstract class Piece {
     }
 
     /**
-     * turns the piece clokwise
+     * turns the piece clockwise
      */
     public final void turnClockWise() {
         switch (myRotation) {
@@ -214,7 +214,7 @@ public abstract class Piece {
     }
 
     /**
-     * turns the piece counter clokwise
+     * turns the piece counter clockwise
      */
     public final void turnCounterClockWise() {
         switch (myRotation) {

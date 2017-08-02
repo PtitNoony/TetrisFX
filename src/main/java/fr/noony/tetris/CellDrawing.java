@@ -16,7 +16,7 @@
  */
 package fr.noony.tetris;
 
-import javafx.application.Platform;
+import static javafx.application.Platform.runLater;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
@@ -38,7 +38,7 @@ public class CellDrawing {
     /**
      *
      * @param i row
-     * @param j colonm
+     * @param j column
      * @param elementCode code of the element
      */
     public CellDrawing(int i, int j, int elementCode) {
@@ -87,7 +87,7 @@ public class CellDrawing {
     public final void setElement(int elementCode) {
         if (pieceCode != elementCode) {
             pieceCode = elementCode;
-            Platform.runLater(() -> setElement());
+            runLater(this::setElement);
         }
     }
 

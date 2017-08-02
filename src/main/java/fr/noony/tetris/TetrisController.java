@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
+import static javafx.application.Platform.runLater;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -132,8 +132,8 @@ public class TetrisController implements Initializable, GridView {
 
     /**
      *
-     * @param url url
-     * @param rb ressource bundle
+     * @param url URL
+     * @param rb resource bundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -164,7 +164,7 @@ public class TetrisController implements Initializable, GridView {
     }
 
     private void startGame() {
-        Platform.runLater(() -> {
+        runLater(() -> {
             grid.init();
             grid.start();
             pauseButton.setDisable(false);
@@ -200,7 +200,7 @@ public class TetrisController implements Initializable, GridView {
         pauseButton.setDisable(false);
         startButton.setDisable(true);
         stopButton.setDisable(false);
-        Platform.runLater(() -> scoreLabel.setText("" + score + " :: GAME OVER"));
+        runLater(() -> scoreLabel.setText("" + score + " :: GAME OVER"));
     }
 
     /**
@@ -208,7 +208,7 @@ public class TetrisController implements Initializable, GridView {
      */
     @Override
     public void update() {
-        Platform.runLater(() -> {
+        runLater(() -> {
             if (score != grid.getScore()) {
                 score = grid.getScore();
                 scoreLabel.setText("" + score);

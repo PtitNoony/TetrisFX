@@ -46,7 +46,7 @@ public class Tetris extends Application {
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(Tetris.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Tetris.class.getName()).log(Level.SEVERE, "{0}", ex);
             }
         });
     }

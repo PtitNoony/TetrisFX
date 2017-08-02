@@ -160,7 +160,7 @@ public class Grid {
     }
 
     private void updateViews() {
-        views.stream().forEach((view) -> view.update());
+        views.stream().forEach(GridView::update);
     }
 
     /**
@@ -385,7 +385,7 @@ public class Grid {
 
     /**
      *
-     * @return the nex piece to appear
+     * @return the next piece to appear
      */
     public Piece getNextItem() {
         return nextPiece;
