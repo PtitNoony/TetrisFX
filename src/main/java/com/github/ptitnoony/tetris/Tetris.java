@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.application.Platform;
+import static javafx.application.Platform.runLater;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -38,10 +38,9 @@ public class Tetris extends Application {
      */
     @Override
     public void start(Stage stage) {
-        Platform.runLater(() -> {
+        runLater(() -> {
             try {
-                Parent root;
-                root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();

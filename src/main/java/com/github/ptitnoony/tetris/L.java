@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
 import javafx.scene.paint.Color;
 
@@ -22,65 +22,65 @@ import javafx.scene.paint.Color;
  *
  * @author Arnaud Hamon-Keromen
  */
-public class InvertedL extends Piece {
+public class L extends Piece {
 
     /**
      * piece color
      */
-    public static final Color INVERTED_L_COLOR = Color.BLUEVIOLET;
-    private static final int[][] INVERTED_L_DATA_1 = {
+    public static final Color L_COLOR = Color.AQUA;
+    private static final int[][] L_DATA_1 = {
         {0, 0, 0, 0, 0},
         {0, 0, 1, 0, 0},
         {0, 0, 2, 0, 0},
-        {0, 1, 1, 0, 0},
-        {0, 0, 0, 0, 0}};
-    private static final int[][] INVERTED_L_DATA_2 = {
-        {0, 0, 0, 0, 0},
-        {0, 1, 0, 0, 0},
-        {0, 1, 2, 1, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0}};
-    private static final int[][] INVERTED_L_DATA_3 = {
-        {0, 0, 0, 0, 0},
         {0, 0, 1, 1, 0},
-        {0, 0, 2, 0, 0},
-        {0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0}};
-    private static final int[][] INVERTED_L_DATA_4 = {
+    private static final int[][] L_DATA_2 = {
         {0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0},
         {0, 1, 2, 1, 0},
+        {0, 1, 0, 0, 0},
+        {0, 0, 0, 0, 0}};
+    private static final int[][] L_DATA_3 = {
+        {0, 0, 0, 0, 0},
+        {0, 1, 1, 0, 0},
+        {0, 0, 2, 0, 0},
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0}};
+    private static final int[][] L_DATA_4 = {
+        {0, 0, 0, 0, 0},
         {0, 0, 0, 1, 0},
+        {0, 1, 2, 1, 0},
+        {0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0}};
 
     /**
      *
-     * @param g the grid
+     * @param g grid
      */
-    public InvertedL(Grid g) {
+    public L(Grid g) {
         super(g);
         setRotation(MatrixRotation.ONE);
     }
 
     /**
      *
-     * @param rotation the rotation matrix
+     * @param rotation rotation matrix
      */
     @Override
     protected final void setRotation(MatrixRotation rotation) {
         setMyRotation(rotation);
         switch (getMyRotation()) {
             case ONE:
-                setCurrentMatrix(INVERTED_L_DATA_1.clone());
+                setCurrentMatrix(L_DATA_1.clone());
                 break;
             case TWO:
-                setCurrentMatrix(INVERTED_L_DATA_2.clone());
+                setCurrentMatrix(L_DATA_2.clone());
                 break;
             case THREE:
-                setCurrentMatrix(INVERTED_L_DATA_3.clone());
+                setCurrentMatrix(L_DATA_3.clone());
                 break;
             case FOUR:
-                setCurrentMatrix(INVERTED_L_DATA_4.clone());
+                setCurrentMatrix(L_DATA_4.clone());
                 break;
             default:
                 throw new IllegalArgumentException("" + getMyRotation());
@@ -89,10 +89,10 @@ public class InvertedL extends Piece {
 
     /**
      *
-     * @return the lInverted piece code
+     * @return l piece code
      */
     @Override
     public int getCode() {
-        return Piece.L_INVERTED_CODE;
+        return Piece.L_CODE;
     }
 }

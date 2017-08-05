@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
-import static fr.noony.tetris.Grid.DEFAULT_COLUMN_NUMBER;
-import static fr.noony.tetris.Grid.DEFAULT_ROW_NUMBER;
+import static com.github.ptitnoony.tetris.Grid.DEFAULT_COLUMN_NUMBER;
+import static com.github.ptitnoony.tetris.Grid.DEFAULT_ROW_NUMBER;
 import java.awt.Point;
 import java.util.logging.Level;
 import static java.util.logging.Logger.getLogger;

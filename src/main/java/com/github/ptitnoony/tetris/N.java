@@ -14,46 +14,42 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
-import static fr.noony.tetris.Piece.MatrixRotation.FOUR;
-import static fr.noony.tetris.Piece.MatrixRotation.ONE;
-import static fr.noony.tetris.Piece.MatrixRotation.THREE;
-import static fr.noony.tetris.Piece.MatrixRotation.TWO;
 import javafx.scene.paint.Color;
 
 /**
  *
  * @author Arnaud Hamon-Keromen
  */
-public class T extends Piece {
+public class N extends Piece {
 
     /**
      * piece color
      */
-    public static final Color T_COLOR = Color.CHOCOLATE;
-    private static final int[][] T_DATA_1 = {
+    public static final Color N_COLOR = Color.ORANGE;
+    private static final int[][] N_DATA_1 = {
         {0, 0, 0, 0, 0},
-        {0, 0, 1, 0, 0},
+        {0, 0, 0, 1, 0},
         {0, 0, 2, 1, 0},
         {0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0}};
-    private static final int[][] T_DATA_2 = {
+    private static final int[][] N_DATA_2 = {
         {0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0},
-        {0, 1, 2, 1, 0},
-        {0, 0, 1, 0, 0},
+        {0, 1, 2, 0, 0},
+        {0, 0, 1, 1, 0},
         {0, 0, 0, 0, 0}};
-    private static final int[][] T_DATA_3 = {
+    private static final int[][] N_DATA_3 = {
         {0, 0, 0, 0, 0},
         {0, 0, 1, 0, 0},
         {0, 1, 2, 0, 0},
-        {0, 0, 1, 0, 0},
+        {0, 1, 0, 0, 0},
         {0, 0, 0, 0, 0}};
-    private static final int[][] T_DATA_4 = {
+    private static final int[][] N_DATA_4 = {
         {0, 0, 0, 0, 0},
-        {0, 0, 1, 0, 0},
-        {0, 1, 2, 1, 0},
+        {0, 1, 1, 0, 0},
+        {0, 0, 2, 1, 0},
         {0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0}};
 
@@ -61,7 +57,7 @@ public class T extends Piece {
      *
      * @param g grid
      */
-    public T(Grid g) {
+    public N(Grid g) {
         super(g);
         setRotation(MatrixRotation.ONE);
     }
@@ -72,33 +68,31 @@ public class T extends Piece {
      */
     @Override
     protected final void setRotation(MatrixRotation rotation) {
-        if (getMyRotation() != rotation) {
-            setMyRotation(rotation);
-            switch (getMyRotation()) {
-                case ONE:
-                    setCurrentMatrix(T_DATA_1.clone());
-                    break;
-                case TWO:
-                    setCurrentMatrix(T_DATA_2.clone());
-                    break;
-                case THREE:
-                    setCurrentMatrix(T_DATA_3.clone());
-                    break;
-                case FOUR:
-                    setCurrentMatrix(T_DATA_4.clone());
-                    break;
-                default:
-                    throw new IllegalArgumentException("" + getMyRotation());
-            }
+        setMyRotation(rotation);
+        switch (getMyRotation()) {
+            case ONE:
+                setCurrentMatrix(N_DATA_1.clone());
+                break;
+            case TWO:
+                setCurrentMatrix(N_DATA_2.clone());
+                break;
+            case THREE:
+                setCurrentMatrix(N_DATA_3.clone());
+                break;
+            case FOUR:
+                setCurrentMatrix(N_DATA_4.clone());
+                break;
+            default:
+                throw new IllegalArgumentException("" + getMyRotation());
         }
     }
 
     /**
      *
-     * @return the t piece code
+     * @return the n piece code
      */
     @Override
     public int getCode() {
-        return Piece.T_CODE;
+        return Piece.N_CODE;
     }
 }

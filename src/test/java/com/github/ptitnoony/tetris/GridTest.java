@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
-import javafx.embed.swing.JFXPanel;
-import javafx.scene.layout.Pane;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,14 +26,16 @@ import org.junit.Test;
  *
  * @author Arnaud
  */
-public class GridDrawingTest {
+public class GridTest {
 
-    public GridDrawingTest() {
-        JFXPanel panel = new JFXPanel();
+    private Grid instance;
+
+    public GridTest() {
     }
 
     @BeforeClass
     public static void setUpClass() {
+
     }
 
     @AfterClass
@@ -50,32 +50,21 @@ public class GridDrawingTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of update method, of class GridDrawing.
-     */
     @Test
-    public void testInstance() {
-        Grid g = new Grid();
-        Pane p = new Pane();
-        GridDrawing instance = new GridDrawing(p, g);
-        instance.update();
-        //
-        try {
-            instance = new GridDrawing(null, g);
-            instance.update();
-        } catch (Exception e) {
+    public void testGrid() {
+        instance = new Grid();
+        for (int i = 0; i < 20; i++) {
+            createAndBasicRun();
         }
-        //
-        try {
-            instance = new GridDrawing(p, null);
-            instance.update();
-        } catch (Exception e) {
-        }
-        //
-        try {
-            instance = new GridDrawing(null, null);
-            instance.update();
-        } catch (Exception e) {
+    }
+
+    private void createAndBasicRun() {
+        instance.init();
+        instance.start();
+        for (int i = 0; i < 10; i++) {
+            instance.moveDown();
+            instance.moveLeft();
+            instance.moveRight();
         }
     }
 

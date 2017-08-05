@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" onKeyTyped="#processKeyTyped" prefHeight="549.0" prefWidth="349.0" xmlns:fx="http://javafx.com/fxml" fx:controller="fr.noony.tetris.TetrisController">
+<AnchorPane id="AnchorPane" onKeyTyped="#processKeyTyped" prefHeight="549.0" prefWidth="349.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.github.ptitnoony.tetris.TetrisController">
     <children>
         <Button id="button" fx:id="startButton" layoutX="14.0" layoutY="14.0" onAction="#startAction" prefWidth="69.0" text="Start" />
         <Label id="label" fx:id="scoreLabel" layoutX="14.0" layoutY="218.0" minHeight="16.0" minWidth="69.0" />

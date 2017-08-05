@@ -14,10 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package fr.noony.tetris;
+package com.github.ptitnoony.tetris;
 
-import static fr.noony.tetris.Grid.DEFAULT_COLUMN_NUMBER;
-import static fr.noony.tetris.Grid.DEFAULT_ROW_NUMBER;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,41 +24,33 @@ import javafx.scene.shape.Rectangle;
  *
  * @author Arnaud Hamon-Keromen
  */
-public class GridDrawing implements GridView {
+public class PreviewDrawing implements GridView {
 
     /**
-     * default grid width in pixels
+     * Size of squares for block preview
      */
-    public static final int DEFAULT_GRID_AREA_WIDTH = 200;
-    /**
-     * default grid height in pixels
-     */
-    public static final int DEFAULT_GRID_AREA_HEIGHT = 500;
-    /**
-     * default grid square size
-     */
-    public static final int DEFAULT_GRID_ELEMENT_SIZE = 20;
+    public static final int DEFAULT_PREVIEW_ELEMENT_SIZE = 20;
     private CellDrawing[][] cellDrawings;
     private final Grid grid;
 
     /**
      *
-     * @param parent gridGrawing parent
-     * @param g associated grid
+     * @param parent the parent to put the previewGrid in
+     * @param g the grid related to the preview
      */
-    public GridDrawing(Pane parent, Grid g) {
+    public PreviewDrawing(Pane parent, Grid g) {
         grid = g;
         if ((parent != null) && (grid != null)) {
             Rectangle background = new Rectangle();
-            background.setHeight(DEFAULT_GRID_AREA_HEIGHT);
-            background.setWidth(DEFAULT_GRID_AREA_WIDTH);
+            background.setHeight(100);
+            background.setWidth(100);
             background.setStroke(Color.BLACK);
             background.setFill(null);
             parent.getChildren().add(background);
-            cellDrawings = new CellDrawing[DEFAULT_ROW_NUMBER + 1][DEFAULT_COLUMN_NUMBER];
-            for (int i = 0; i < DEFAULT_ROW_NUMBER + 1; i++) {
-                for (int j = 0; j < DEFAULT_COLUMN_NUMBER; j++) {
-                    CellDrawing cellDrawing = new CellDrawing(i, j, grid.getCodeAt(i, j));
+            cellDrawings = new CellDrawing[5][5];
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    CellDrawing cellDrawing = new CellDrawing(i, j, grid.getNextItem().getCodeAt(i, j));
                     cellDrawings[i][j] = cellDrawing;
                     parent.getChildren().add(cellDrawing.getNode());
                 }
@@ -75,9 +65,9 @@ public class GridDrawing implements GridView {
      */
     @Override
     public void update() {
-        for (int i = 0; i < DEFAULT_ROW_NUMBER + 1; i++) {
-            for (int j = 0; j < DEFAULT_COLUMN_NUMBER; j++) {
-                cellDrawings[i][j].setElement(grid.getCodeAt(i, j));
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                cellDrawings[i][j].setElement(grid.getNextItem().getCodeAt(i, j));
             }
         }
     }
