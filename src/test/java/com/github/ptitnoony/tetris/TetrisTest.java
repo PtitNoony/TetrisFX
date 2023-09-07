@@ -33,7 +33,7 @@ import org.junit.Test;
  */
 public class TetrisTest {
 
-    private Tetris tetris;
+    private TetrisApp tetris;
 
     public TetrisTest() {
     }
@@ -62,7 +62,7 @@ public class TetrisTest {
         System.out.println("main");
         JFXPanel fXPanel = new JFXPanel();
         Platform.runLater(() -> {
-            tetris = new Tetris();
+            tetris = new TetrisApp();
             Stage s = new Stage();
             tetris.start(s);
         });
