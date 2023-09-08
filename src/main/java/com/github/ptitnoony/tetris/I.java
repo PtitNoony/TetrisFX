@@ -71,20 +71,11 @@ public class I extends Piece {
     protected final void setRotation(MatrixRotation rotation) {
         setMyRotation(rotation);
         switch (getMyRotation()) {
-            case ONE:
-                setCurrentMatrix(I_DATA_1.clone());
-                break;
-            case TWO:
-                setCurrentMatrix(I_DATA_2.clone());
-                break;
-            case THREE:
-                setCurrentMatrix(I_DATA_3.clone());
-                break;
-            case FOUR:
-                setCurrentMatrix(I_DATA_4.clone());
-                break;
-            default:
-                throw new IllegalArgumentException("" + getMyRotation());
+            case ONE -> setCurrentMatrix(I_DATA_1.clone());
+            case TWO -> setCurrentMatrix(I_DATA_2.clone());
+            case THREE -> setCurrentMatrix(I_DATA_3.clone());
+            case FOUR -> setCurrentMatrix(I_DATA_4.clone());
+            default -> throw new IllegalArgumentException("" + getMyRotation());
         }
     }
 

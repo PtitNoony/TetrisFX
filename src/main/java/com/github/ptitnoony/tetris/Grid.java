@@ -16,7 +16,6 @@
  */
 package com.github.ptitnoony.tetris;
 
-import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -92,7 +91,7 @@ public class Grid {
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         for (int i = 0; i < DEFAULT_ROW_NUMBER + 1; i++) {
             for (int j = 0; j < DEFAULT_COLUMN_NUMBER; j++) {
                 sb.append(gridRender[i][j]);
@@ -105,8 +104,8 @@ public class Grid {
 
     private void updateGridRenderer() {
         cloneGrid();
-        int[][] pData = currentPiece.getCurrentMatrix();
-        Point pPosition = currentPiece.getCenterPosition();
+        var pData = currentPiece.getCurrentMatrix();
+        var pPosition = currentPiece.getCenterPosition();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 // -2  -2
@@ -194,36 +193,20 @@ public class Grid {
     }
 
     private void createNewPiece() {
-        int randomInt = randomIntValues[currentPieceId];
+        var randomInt = randomIntValues[currentPieceId];
         currentPieceId++;
-        int randowPieceType = randomInt / 7;
-        int randomRotate = randomInt - 7 * randowPieceType;
-        switch (randowPieceType) {
-            case 0:
-                nextPiece = new T(this);
-                break;
-            case 1:
-                nextPiece = new I(this);
-                break;
-            case 2:
-                nextPiece = new InvertedL(this);
-                break;
-            case 3:
-                nextPiece = new L(this);
-                break;
-            case 4:
-                nextPiece = new N(this);
-                break;
-            case 5:
-                nextPiece = new InvertedN(this);
-                break;
-            case 6:
-                nextPiece = new Square(this);
-                break;
-            default:
-                nextPiece = new T(this);
-                break;
-        }
+        var randowPieceType = randomInt / 7;
+        var randomRotate = randomInt - 7 * randowPieceType;
+        nextPiece = switch (randowPieceType) {
+            case 0 -> new T(this);
+            case 1 -> new I(this);
+            case 2 -> new InvertedL(this);
+            case 3 -> new L(this);
+            case 4 -> new N(this);
+            case 5 -> new InvertedN(this);
+            case 6 -> new Square(this);
+            default -> new T(this);
+        };
         for (int i = 0; i < randomRotate; i++) {
             nextPiece.turnClockWise();
         }
@@ -268,7 +251,7 @@ public class Grid {
             currentPiece.moveDown();
         } else {
             copyToGrid();
-            int nbNewLinesCompleted = 0;
+            var nbNewLinesCompleted = 0;
             while (checkCompletedLines()) {
                 nbNewLinesCompleted++;
             }
@@ -298,9 +281,9 @@ public class Grid {
     }
 
     private boolean checkCompletedLines() {
-        boolean aChange = false;
+        var aChange = false;
         for (int i = 0; i < DEFAULT_ROW_NUMBER; i++) {
-            boolean lineFull = true;
+            var lineFull = true;
             for (int j = 0; j < DEFAULT_COLUMN_NUMBER; j++) {
                 if (gridRender[i][j] == Piece.EMTY_CODE) {
                     lineFull = false;
@@ -317,7 +300,7 @@ public class Grid {
     }
 
     private void removeRow(int row) {
-        int[][] tempGrid = new int[DEFAULT_ROW_NUMBER + 1][DEFAULT_COLUMN_NUMBER];
+        var tempGrid = new int[DEFAULT_ROW_NUMBER + 1][DEFAULT_COLUMN_NUMBER];
         for (int i = 1; i < DEFAULT_ROW_NUMBER + 1; i++) {
             System.arraycopy(gridRender[i], 0, tempGrid[i], 0, DEFAULT_COLUMN_NUMBER);
         }

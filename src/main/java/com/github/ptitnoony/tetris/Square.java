@@ -52,14 +52,8 @@ public class Square extends Piece {
     protected final void setRotation(MatrixRotation rotation) {
         setMyRotation(rotation);
         switch (getMyRotation()) {
-            case ONE:
-            case TWO:
-            case THREE:
-            case FOUR:
-                setCurrentMatrix(SQUARE_DATA.clone());
-                break;
-            default:
-                throw new IllegalArgumentException("" + getMyRotation());
+            case ONE, TWO, THREE, FOUR -> setCurrentMatrix(SQUARE_DATA.clone());
+            default -> throw new IllegalArgumentException("" + getMyRotation());
         }
     }
 

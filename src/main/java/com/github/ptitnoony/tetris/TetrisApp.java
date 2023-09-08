@@ -41,7 +41,7 @@ public class TetrisApp extends Application {
         runLater(() -> {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
-                Scene scene = new Scene(root);
+                var scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {

@@ -40,6 +40,8 @@ import javafx.util.Duration;
  */
 public class TetrisController implements Initializable, GridView {
 
+    private static final Logger LOG = Logger.getGlobal();
+
     private final Grid grid = new Grid();
     private Timeline timeline;
     @FXML
@@ -61,8 +63,8 @@ public class TetrisController implements Initializable, GridView {
      */
     @FXML
     public void startAction(ActionEvent event) {
+        LOG.log(Level.INFO, "Start Game on event :: {0}", event);
         startGame();
-        Logger.getLogger(TetrisController.class.getName()).log(Level.INFO, "Start Game on event :: {0}", event);
     }
 
     /**
@@ -71,8 +73,8 @@ public class TetrisController implements Initializable, GridView {
      */
     @FXML
     public void stopAction(ActionEvent event) {
+        LOG.log(Level.INFO, "Stop Game on event :: {0}", event);
         stopGame();
-        Logger.getLogger(TetrisController.class.getName()).log(Level.INFO, "Stop Game on event :: {0}", event);
     }
 
     /**
@@ -81,8 +83,8 @@ public class TetrisController implements Initializable, GridView {
      */
     @FXML
     public void pauseAction(ActionEvent event) {
+        LOG.log(Level.INFO, "Pause Game on event :: {0}", event);
         pauseGame();
-        Logger.getLogger(TetrisController.class.getName()).log(Level.INFO, "Pause Game on event :: {0}", event);
     }
 
     /**
@@ -92,40 +94,15 @@ public class TetrisController implements Initializable, GridView {
     @FXML
     public void processKeyTyped(KeyEvent event) {
         if (canInteract) {
-            String keyTyped = event.getCharacter();
+            var keyTyped = event.getCharacter();
             switch (keyTyped) {
-                case "s":
-                case "l":
-                case "S":
-                case "L":
-                    grid.moveDown();
-                    break;
-                case "q":
-                case "k":
-                case "Q":
-                case "K":
-                    grid.moveLeft();
-                    break;
-                case "d":
-                case "m":
-                case "D":
-                case "M":
-                    grid.moveRight();
-                    break;
-                case "a":
-                case "i":
-                case "A":
-                case "I":
-                    grid.rotateCounterClockWise();
-                    break;
-                case "e":
-                case "p":
-                case "E":
-                case "P":
-                    grid.rotateClockWise();
-                    break;
-                default:
-                    break;
+                case "s", "l", "S", "L" -> grid.moveDown();
+                case "q", "k", "Q", "K" -> grid.moveLeft();
+                case "d", "m", "D", "M" -> grid.moveRight();
+                case "a", "i", "A", "I" -> grid.rotateCounterClockWise();
+                case "e", "p", "E", "P" -> grid.rotateClockWise();
+                default -> {
+                }
             }
         }
     }
@@ -140,15 +117,15 @@ public class TetrisController implements Initializable, GridView {
         score = -1;
         nbLines = -1;
         level = -1;
-        int delay = 1000;
+        var delay = 1000;
         canInteract = false;
         paused = false;
         pauseButton.setDisable(true);
         startButton.setDisable(false);
         stopButton.setDisable(true);
-
+        //
         timeline = new Timeline(new KeyFrame(Duration.millis(delay), ae -> {
-            Logger.getLogger(TetrisController.class.getName()).log(Level.FINEST, "new keyfrmae action :: {0}", ae);
+            LOG.log(Level.FINEST, "new keyfrmae action :: {0}", ae);
             canInteract = false;
             grid.forceMoveDown();
             canInteract = true;
@@ -156,8 +133,8 @@ public class TetrisController implements Initializable, GridView {
         timeline.setRate(1000 / (1000 + 10 * (level - 1)));
         timeline.setCycleCount(Animation.INDEFINITE);
         //TODO add pp change
-        GridDrawing gridDrawing = new GridDrawing(drawingArea, grid);
-        PreviewDrawing previewDrawing = new PreviewDrawing(previewArea, grid);
+        var gridDrawing = new GridDrawing(drawingArea, grid);
+        var previewDrawing = new PreviewDrawing(previewArea, grid);
         grid.addView(previewDrawing);
         grid.addView(gridDrawing);
         grid.addView(this);

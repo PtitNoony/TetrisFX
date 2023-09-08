@@ -168,7 +168,7 @@ public abstract class Piece {
      * @param newMatrix matrix to be applied
      */
     protected void setCurrentMatrix(int[][] newMatrix) {
-        this.currentMatrix = newMatrix.clone();
+        currentMatrix = newMatrix.clone();
     }
 
     /**
@@ -196,20 +196,11 @@ public abstract class Piece {
      */
     public final void turnClockWise() {
         switch (myRotation) {
-            case ONE:
-                setRotation(MatrixRotation.TWO);
-                break;
-            case TWO:
-                setRotation(MatrixRotation.THREE);
-                break;
-            case THREE:
-                setRotation(MatrixRotation.FOUR);
-                break;
-            case FOUR:
-                setRotation(MatrixRotation.ONE);
-                break;
-            default:
-                throw new IllegalArgumentException("" + myRotation);
+            case ONE -> setRotation(MatrixRotation.TWO);
+            case TWO -> setRotation(MatrixRotation.THREE);
+            case THREE -> setRotation(MatrixRotation.FOUR);
+            case FOUR -> setRotation(MatrixRotation.ONE);
+            default -> throw new IllegalArgumentException("" + myRotation);
         }
     }
 
@@ -218,20 +209,11 @@ public abstract class Piece {
      */
     public final void turnCounterClockWise() {
         switch (myRotation) {
-            case ONE:
-                setRotation(MatrixRotation.FOUR);
-                break;
-            case TWO:
-                setRotation(MatrixRotation.ONE);
-                break;
-            case THREE:
-                setRotation(MatrixRotation.TWO);
-                break;
-            case FOUR:
-                setRotation(MatrixRotation.THREE);
-                break;
-            default:
-                throw new IllegalArgumentException("" + myRotation);
+            case ONE -> setRotation(MatrixRotation.FOUR);
+            case TWO -> setRotation(MatrixRotation.ONE);
+            case THREE -> setRotation(MatrixRotation.TWO);
+            case FOUR -> setRotation(MatrixRotation.THREE);
+            default -> throw new IllegalArgumentException("" + myRotation);
         }
     }
 
@@ -248,8 +230,7 @@ public abstract class Piece {
      * @return if the piece will hit down at next position
      */
     public final boolean testHitDown() {
-        Point nextPosition = new Point(centerPosition.x + 1, centerPosition.y);
-        return hitAtNextPosition(nextPosition);
+        return hitAtNextPosition(new Point(centerPosition.x + 1, centerPosition.y));
     }
 
     /**
@@ -257,8 +238,7 @@ public abstract class Piece {
      * @return if the piece will hit left at next position
      */
     public final boolean testHitLeft() {
-        Point nextPosition = new Point(centerPosition.x, centerPosition.y - 1);
-        return hitAtNextPosition(nextPosition);
+        return hitAtNextPosition(new Point(centerPosition.x, centerPosition.y - 1));
     }
 
     /**
@@ -266,8 +246,7 @@ public abstract class Piece {
      * @return if the piece will hit right at next position
      */
     public final boolean testHitRight() {
-        Point nextPosition = new Point(centerPosition.x, centerPosition.y + 1);
-        return hitAtNextPosition(nextPosition);
+        return hitAtNextPosition(new Point(centerPosition.x, centerPosition.y + 1));
     }
 
     /**
@@ -287,13 +266,13 @@ public abstract class Piece {
      */
     public final boolean testHitCounterClockWise() {
         turnCounterClockWise();
-        boolean hitClockWise = hitAtNextPosition(centerPosition);
+        var hitClockWise = hitAtNextPosition(centerPosition);
         turnClockWise();
         return hitClockWise;
     }
 
     private boolean hitAtNextPosition(Point nextPosition) {
-        boolean hit = false;
+        var hit = false;
         int desI;
         int desJ;
         try {

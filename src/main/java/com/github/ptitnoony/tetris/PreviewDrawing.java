@@ -41,7 +41,7 @@ public class PreviewDrawing implements GridView {
     public PreviewDrawing(Pane parent, Grid g) {
         grid = g;
         if ((parent != null) && (grid != null)) {
-            Rectangle background = new Rectangle();
+            var background = new Rectangle();
             background.setHeight(100);
             background.setWidth(100);
             background.setStroke(Color.BLACK);
