@@ -75,20 +75,11 @@ public class T extends Piece {
         if (getMyRotation() != rotation) {
             setMyRotation(rotation);
             switch (getMyRotation()) {
-                case ONE:
-                    setCurrentMatrix(T_DATA_1.clone());
-                    break;
-                case TWO:
-                    setCurrentMatrix(T_DATA_2.clone());
-                    break;
-                case THREE:
-                    setCurrentMatrix(T_DATA_3.clone());
-                    break;
-                case FOUR:
-                    setCurrentMatrix(T_DATA_4.clone());
-                    break;
-                default:
-                    throw new IllegalArgumentException("" + getMyRotation());
+                case ONE -> setCurrentMatrix(T_DATA_1.clone());
+                case TWO -> setCurrentMatrix(T_DATA_2.clone());
+                case THREE -> setCurrentMatrix(T_DATA_3.clone());
+                case FOUR -> setCurrentMatrix(T_DATA_4.clone());
+                default -> throw new IllegalArgumentException("" + getMyRotation());
             }
         }
     }

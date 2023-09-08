@@ -93,46 +93,46 @@ public class CellDrawing {
 
     private void setElement() {
         switch (pieceCode) {
-            case Piece.EMTY_CODE:
+            case Piece.EMTY_CODE -> {
                 background.setFill(null);
                 foreground.setFill(null);
-                break;
-            case Piece.GROUND_CODE:
+            }
+            case Piece.GROUND_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(DEFAULT_BACKGROUND_COLOR);
-                break;
-            case Piece.I_CODE:
+            }
+            case Piece.I_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(I.I_COLOR);
-                break;
-            case Piece.L_CODE:
+            }
+            case Piece.L_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(L.L_COLOR);
-                break;
-            case Piece.L_INVERTED_CODE:
+            }
+            case Piece.L_INVERTED_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(InvertedL.INVERTED_L_COLOR);
-                break;
-            case Piece.SQUARE_CODE:
+            }
+            case Piece.SQUARE_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(Square.SQUARE_COLOR);
-                break;
-            case Piece.T_CODE:
+            }
+            case Piece.T_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(T.T_COLOR);
-                break;
-            case Piece.N_CODE:
+            }
+            case Piece.N_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(N.N_COLOR);
-                break;
-            case Piece.N_INVERTED_CODE:
+            }
+            case Piece.N_INVERTED_CODE -> {
                 background.setFill(DEFAULT_BACKGROUND_COLOR);
                 foreground.setFill(InvertedN.INVERTED_N_COLOR);
-                break;
-            default:
+            }
+            default -> {
                 background.setFill(Color.MAGENTA);
                 foreground.setFill(Color.MAGENTA);
-                break;
+            }
         }
     }
 }

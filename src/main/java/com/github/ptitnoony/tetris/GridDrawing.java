@@ -51,7 +51,7 @@ public class GridDrawing implements GridView {
     public GridDrawing(Pane parent, Grid g) {
         grid = g;
         if ((parent != null) && (grid != null)) {
-            Rectangle background = new Rectangle();
+            var background = new Rectangle();
             background.setHeight(DEFAULT_GRID_AREA_HEIGHT);
             background.setWidth(DEFAULT_GRID_AREA_WIDTH);
             background.setStroke(Color.BLACK);
@@ -60,7 +60,7 @@ public class GridDrawing implements GridView {
             cellDrawings = new CellDrawing[DEFAULT_ROW_NUMBER + 1][DEFAULT_COLUMN_NUMBER];
             for (int i = 0; i < DEFAULT_ROW_NUMBER + 1; i++) {
                 for (int j = 0; j < DEFAULT_COLUMN_NUMBER; j++) {
-                    CellDrawing cellDrawing = new CellDrawing(i, j, grid.getCodeAt(i, j));
+                    var cellDrawing = new CellDrawing(i, j, grid.getCodeAt(i, j));
                     cellDrawings[i][j] = cellDrawing;
                     parent.getChildren().add(cellDrawing.getNode());
                 }
